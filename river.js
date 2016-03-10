@@ -14,40 +14,24 @@ function northAmericanRivers() {
     var path = d3.geo.path()
         .projection(projection);
     
-//    d3.json("data/ne_10m_rivers_north_america/narstopo.json", function(error, rivers) {
-//	if (error) return console.error(error);
-//	console.log(rivers.objects.supplement.geometries);
 
-//	svg.insert("path", ".graticule")
-//	    .datum(topojson.feature(rivers, rivers.objects.supplement))
-    //	    .attr("d", path);
-
-    //});
-
-  
- //   d3.json("data/ne_10m_rivers_lake_centerlines/rivers.json", function(error, rivers) {
-//	if (error) return console.error(error);
-//	console.log(rivers.objects.rivers.geometries);
-
-//	svg.insert("path", ".graticule")
-//	    .datum(topojson.feature(rivers, rivers.objects.rivers))
-  //  	    .attr("d", path)
-//	    .attr("fill", blue);
-  //  });
-
-    d3.json("data/all-rivers-lakes-north-america.json", function(error, rivers) {
+    d3.json("data/all-north-american-rivers-10m.json", function(error, rivers) {
 	if (error) return console.error(error);
 	console.log(rivers.objects);
 
 	svg.insert("path", ".graticule")
-	    .datum(topojson.feature(rivers, rivers.objects.riversandlakes))
+	    .datum(topojson.feature(rivers, rivers.objects.mostrivers))
     	    .attr("d", path)
-	    .style("fill", "blue")
-
-	svg.insert("path", ".graticule")
-	    .datum(topojson.feature(rivers, rivers.objects.supplemental))
+	    .style("fill", "white")
+	    .style("stroke", "blue")
+	    .attr("transform", "scale(1,1)");
+	
+	svg.insert("path")
+	    .datum(topojson.feature(rivers, rivers.objects.supprivers))
     	    .attr("d", path)
-	    .style("fill", "blue")
+	    .style("fill", "white")
+	    .style("stroke", "blue")
+	    .attr("transform", "scale(1,1)");
 
       });
 
